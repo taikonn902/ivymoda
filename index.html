@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+
+    <title>IVY Shop - 2025 version</title>
+</head>
+
+<body>
+    <header id="header-page"
+        class="py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300">
+        <nav id="nav-left" class="flex gap-4 pl-5 text-black uppercase font-semibold text-[13px]">
+            <li>
+                <a href="#">Nam</a>
+            </li>
+            <li>
+                <a href="#">Nữ</a>
+            </li>
+            <li>
+                <a href="#">Trẻ em</a>
+            </li>
+            <li>
+                <a href="#" class="text-[#FF0000] hover:[#FF0000]">Siêu Sale</a>
+            </li>
+            <li>
+                <a href="#">Bộ Sưu Tập</a>
+            </li>
+            <li>
+                <a href="#">Về Chúng Tôi</a>
+            </li>
+        </nav>
+
+        <a href="index.html" class="absolute left-1/2 -translate-x-1/2 mt-2">
+            <img src="images/logo.png" alt="logo" class="w-[9rem]">
+        </a>
+
+        <div id="right-header" class="flex justify-between gap-10">
+            <form action="search.php" class="relative flex items-center w-[280px] group">
+                <span
+                    class="material-symbols-outlined thin absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                    search
+                </span>
+                <input id="search-input" type="search" name="search" placeholder="TÌM KIẾM SẢN PHẨM"
+                    class="w-full border border-gray-300 rounded-md py-2 pl-12 pr-4 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm ml-[2px] mr-[2px]"
+                    aria-label="Tìm kiếm sản phẩm" autocomplete="off" />
+                <div id="search-suggestion"
+                    class="absolute left-0 top-full mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-40 hidden group-focus-within:block group-hover:block">
+                    <div class="mb-2 font-semibold text-gray-800">Tìm kiếm nhiều</div>
+                    <div class="flex flex-wrap gap-2" id="item-search-rcm">
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Đầm</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">trễ
+                            vai</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Áo
+                            khoác</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Quần</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Áo
+                            sơ mi</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Vest</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">parka</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">tweed</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">croptop</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">Chân
+                            váy</span>
+                        <span
+                            class="px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 bg-gray-50 cursor-pointer transition-all duration-200 hover:text-white hover:bg-[#AC2F33]">lông
+                            cừu</span>
+                    </div>
+                </div>
+            </form>
+            <nav id="nav-right" class="flex gap-5 pr-5">
+                <a href="#"><span class="material-symbols-outlined thin">
+                        favorite
+                    </span></a>
+                <a href="login.html"><span class="material-symbols-outlined thin">
+                        person
+                    </span></a>
+                <a href="#" class="relative">
+                    <span class="material-symbols-outlined thin">
+                        shopping_basket
+                    </span>
+                    <span
+                        class="cart-total absolute -top-0 -right-3 bg-red-600 text-white text-xs rounded-full flex items-center justify-center w-[20px] h-[20px]">4</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-end bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl mt-10 mr-10 p-6 relative">
+            <button id="close-search-modal"
+                class="absolute top-3 right-3 text-gray-500 hover:text-black text-2xl">&times;</button>
+            <form action="search.php" class="flex items-center mb-4 border">
+                <span class="material-symbols-outlined thin mr-2 text-2xl text-gray-400">search</span>
+                <input type="search" name="q" placeholder="Tìm kiếm sản phẩm..."
+                    class="w-full border border-gray-300 rounded-md py-3 px-4 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-lg"
+                    autofocus />
+                <button type="submit"
+                    class="ml-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Tìm</button>
+            </form>
+        </div>
+    </div>
+
+    <main id="main-page" class="pt-[120px]">
+        <section id="banner-page"
+            class="w-[90%] mx-auto relative flex flex-col items-center overflow-hidden rounded-tl-[70px] rounded-br-[70px]"
+            style="height:calc(100vh-80px)">
+            <div class="relative w-full flex items-center justify-center">
+                <div id="banner-slider" class="flex transition-transform duration-500 w-full h-full">
+                    <img src="images/banner1.webp" alt="banner1"
+                        class="banner-img rounded-tl-[70px] rounded-br-[70px] w-full h-full object-cover flex-shrink-0" />
+                    <img src="images/banner2.webp" alt="banner2"
+                        class="banner-img rounded-tl-[70px] rounded-br-[70px] w-full h-full object-cover flex-shrink-0" />
+                    <img src="images/banner3.webp" alt="banner3"
+                        class="banner-img rounded-tl-[70px] rounded-br-[70px] w-full h-full object-cover flex-shrink-0" />
+                </div>
+
+                <!-- Prev Button -->
+                <button id="banner-prev"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 rounded-[50%] w-[50px] h-[50px] p-2 shadow text-xl z-10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[#FF0000] font-extrabold"
+                        style="font-variation-settings: 'wght' 700;">chevron_left</span>
+                </button>
+
+                <!-- Next Button -->
+                <button id="banner-next"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 rounded-[50%] w-[50px] h-[50px] p-2 shadow text-xl z-10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[#FF0000] font-extrabold"
+                        style="font-variation-settings: 'wght' 700;">chevron_right</span>
+                </button>
+
+                <!-- Radio Buttons inside banner -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-3 z-20 px-4 py-2 rounded-full">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="banner-radio" class="banner-radio peer hidden" checked />
+                        <span
+                            class="block w-4 h-4 rounded-full border-2 border-indigo-400 bg-white transition-all duration-200 peer-checked:bg-indigo-600 peer-checked:border-indigo-600"></span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="banner-radio" class="banner-radio peer hidden" />
+                        <span
+                            class="block w-4 h-4 rounded-full border-2 border-indigo-400 bg-white transition-all duration-200 peer-checked:bg-indigo-600 peer-checked:border-indigo-600"></span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="banner-radio" class="banner-radio peer hidden" />
+                        <span
+                            class="block w-4 h-4 rounded-full border-2 border-indigo-400 bg-white transition-all duration-200 peer-checked:bg-indigo-600 peer-checked:border-indigo-600"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section id="new-product" class="flex flex-col items-center mt-[60px] mb-10">
+            <h1 class="text-3xl mb-10 uppercase ">New products</h1>
+
+            <ul class="w-[90%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <li class="product-item">
+                    <a href="detail.html" class="relative block w-full">
+                        <span class="badge-ribbon">NEW</span>
+                        <img src="images/soft-ivy-top1.webp" alt="product-img" class="h-[370px] w-full object-cover" />
+                    </a>
+
+                    <div id="color-favorite" class="flex justify-between items-center justify-center">
+                        <div class="product-colors">
+                            <span class="product-color-dot relative" style="background:#FEEA7B">
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden">check_circle</span>
+                            </span>
+                            <span class="product-color-dot relative selected" style="background:#222">
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">check_circle</span>
+                            </span>
+                        </div>
+                        <span
+                            class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                    </div>
+
+
+                    <p id="product-name" class="mt-2 mb-2">Soft IVY Top - Áo Sơ Mi Dáng Vest</p>
+
+                    <div id="price-action" class="flex justify-between items-center">
+                        <div id="product-price" class="w-[50%] flex items-center gap-5">
+                            <span id="flash-sale-price-new" class="text-xl font-semibold">903.000đ</span>
+                            <span id="flash-sale-price-old" class="line-through text-sm">1.290.000đ</span>
+                        </div>
+                        <button
+                            class="w-[35px] h-[35px] bg-black border border-black rounded-tl-[10px] rounded-br-[10px] flex items-center justify-center hover:bg-white transition-all duration-300 hover:scale-110 active:scale-95 group">
+
+                            <span
+                                class="material-symbols-outlined text-white group-hover:text-black transition-colors duration-300">
+                                shopping_basket
+                            </span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <a href="#"
+                class="inline-flex items-center justify-center bg-white text-black border border-gray-400 py-2 px-6 rounded-tl-none rounded-br-none rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-colors mt-12 w-[20%] h-[50px] text-lg uppercase">
+                Xem thêm
+            </a>
+        </section>
+
+        <section id="flash-sale" class="flex flex-col items-center mt-[60px] mb-10">
+            <h1 class="text-3xl mb-10 uppercase ">Middle season sale | sale 30% all item</h1>
+
+            <ul id="flash-sale-list" class="w-[90%] flex justify-between">
+                <li id="product-item" class="w-[22%]">
+                    <a href="detail.html" style="position:relative; width:100%;">
+                        <img src="images/soft-ivy-top1.webp" alt="product-img" class="h-[370px] w-full object-cover" />
+                        <div class="flash-sale-badge">-30%</div>
+                    </a>
+
+                    <section id="color-favorite" class="flex justify-between items-center justify-center">
+                        <div class="flash-sale-colors">
+                            <span class="flash-sale-color-dot" style="background:#FEEA7B"></span>
+                            <span class="flash-sale-color-dot selected" style="background:#222"></span>
+                        </div>
+                        <span
+                            class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                    </section>
+
+
+                    <section id="product-name" class="mt-2 mb-2">
+                        <p>Soft IVY Top - Áo Sơ Mi Dáng Vest</p>
+                    </section>
+
+                    <section id="price-action" class="flex justify-between items-center">
+                        <div id="product-price" class="w-[50%] flex items-center gap-5">
+                            <span id="flash-sale-price-new" class="text-xl font-semibold">903.000đ</span>
+                            <span id="flash-sale-price-old" class="text-sm">1.290.000đ</span>
+                        </div>
+                        <button id="add-to-cart"
+                            class="w-[35px] h-[35px] bg-black rounded-tl-[10px] rounded-br-[10px] items-center justify-center flex"><span
+                                class="material-symbols-outlined text-white">shopping_basket</span></button>
+                    </section>
+                </li>
+                <li id="product-item" class="w-[22%]">
+                    <a href="detail.html" style="position:relative; width:100%;">
+                        <img src="images/soft-ivy-top1.webp" alt="product-img" class="h-[370px] w-full object-cover" />
+                        <div class="flash-sale-badge">-30%</div>
+                    </a>
+
+                    <section id="color-favorite" class="flex justify-between items-center justify-center">
+                        <div class="flash-sale-colors">
+                            <span class="flash-sale-color-dot" style="background:#FEEA7B"></span>
+                            <span class="flash-sale-color-dot selected" style="background:#222"></span>
+                        </div>
+                        <span class="flash-sale-fav material-symbols-outlined">favorite</span>
+                    </section>
+
+
+                    <section class="flash-sale-title">Soft IVY Top - Áo Sơ Mi Dáng Vest</section>
+
+                    <section id="price-action" class="flex justify-between items-center">
+                        <div id="product-price" class="w-[50%] flex items-center gap-5">
+                            <span id="flash-sale-price-new" class="text-xl font-semibold">903.000đ</span>
+                            <span id="flash-sale-price-old" class="text-sm">1.290.000đ</span>
+                        </div>
+                        <button id="add-to-cart"
+                            class="w-[35px] h-[35px] bg-black rounded-tl-[10px] rounded-br-[10px] items-center justify-center flex"><span
+                                class="material-symbols-outlined text-white">shopping_basket</span></button>
+                    </section>
+                </li>
+                <li id="product-item" class="w-[22%]">
+                    <a href="detail.html" style="position:relative; width:100%;">
+                        <img src="images/soft-ivy-top1.webp" alt="product-img" class="h-[370px] w-full object-cover" />
+                        <div class="flash-sale-badge">-30%</div>
+                    </a>
+
+                    <section id="color-favorite" class="flex justify-between items-center justify-center">
+                        <div class="flash-sale-colors">
+                            <span class="flash-sale-color-dot" style="background:#FEEA7B"></span>
+                            <span class="flash-sale-color-dot selected" style="background:#222"></span>
+                        </div>
+                        <span class="flash-sale-fav material-symbols-outlined">favorite</span>
+                    </section>
+
+
+                    <section class="flash-sale-title">Soft IVY Top - Áo Sơ Mi Dáng Vest</section>
+
+                    <section id="price-action" class="flex justify-between items-center">
+                        <div id="product-price" class="w-[50%] flex items-center gap-5">
+                            <span id="flash-sale-price-new" class="text-xl font-semibold">903.000đ</span>
+                            <span id="flash-sale-price-old" class="text-sm">1.290.000đ</span>
+                        </div>
+                        <button id="add-to-cart"
+                            class="w-[35px] h-[35px] bg-black rounded-tl-[10px] rounded-br-[10px] items-center justify-center flex"><span
+                                class="material-symbols-outlined text-white">shopping_basket</span></button>
+                    </section>
+                </li>
+                <li id="product-item" class="w-[22%]">
+                    <a href="detail.html" style="position:relative; width:100%;">
+                        <img src="images/soft-ivy-top1.webp" alt="product-img" class="h-[370px] w-full object-cover" />
+                        <div class="flash-sale-badge">-30%</div>
+                    </a>
+
+                    <section id="color-favorite" class="flex justify-between items-center justify-center">
+                        <div class="flash-sale-colors">
+                            <span class="flash-sale-color-dot" style="background:#FEEA7B"></span>
+                            <span class="flash-sale-color-dot selected" style="background:#222"></span>
+                        </div>
+                        <span class="flash-sale-fav material-symbols-outlined">favorite</span>
+                    </section>
+
+
+                    <section class="flash-sale-title">Soft IVY Top - Áo Sơ Mi Dáng Vest</section>
+
+                    <section id="price-action" class="flex justify-between items-center">
+                        <div id="product-price" class="w-[50%] flex items-center gap-5">
+                            <span id="flash-sale-price-new" class="text-xl font-semibold">903.000đ</span>
+                            <span id="flash-sale-price-old" class="text-sm">1.290.000đ</span>
+                        </div>
+                        <button id="add-to-cart"
+                            class="w-[35px] h-[35px] bg-black rounded-tl-[10px] rounded-br-[10px] items-center justify-center flex"><span
+                                class="material-symbols-outlined text-white">shopping_basket</span></button>
+                    </section>
+                </li>
+
+            </ul>
+        </section>
+    </main>
+    <!-- 
+    <footer>
+        <p>Copyright 2025 IVY Shop</p>
+    </footer> -->
+</body>
+
+<script src="js/search.js"></script>
+
+<script src="js/header-hide.js"></script>
+
+<script src="js/color-select.js"></script>
+</html>
