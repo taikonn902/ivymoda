@@ -3,10 +3,6 @@
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 }
 
-#right-header {
-  margin-left: auto;
-}
-
 #right-header a {
   display: flex;
   align-items: center;
