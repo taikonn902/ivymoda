@@ -1,0 +1,31 @@
+/* .product-sizes {
+    animation: fadeInUp 0.3s ease;
+}
+
+.size-item {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    transition: all 0.25s ease;
+}
+
+.size-item:hover {
+    border-color: black;
+}
+
+.size-item.active {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */

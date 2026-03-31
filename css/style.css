@@ -57,13 +57,13 @@
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10);
 }
 
-.flash-sale-colors {
+.product-colors {
   display: flex;
   gap: 8px;
   margin: 12px 0 8px 0;
 }
 
-.flash-sale-color-dot {
+.product-color-dot {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -73,7 +73,7 @@
   transition: border 0.2s;
 }
 
-.flash-sale-color-dot.selected {
+.product-color-dot.selected {
   border: 2px solid #222;
 }
 
@@ -156,7 +156,7 @@
   z-index: 10;
 }
 
-/* tạo phần tam giác gập */
+
 .badge-ribbon::before {
   content: "";
   position: absolute;

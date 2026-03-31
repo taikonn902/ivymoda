@@ -1,0 +1,32 @@
+/* base */
+.swal-toast-custom {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 14px !important;
+    padding: 12px 12px !important;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    color: #fff !important;
+
+}
+
+/* SUCCESS */
+.swal2-popup.swal2-toast.swal2-icon-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+    color: white !important;
+}
+
+/* ERROR */
+.swal2-popup.swal2-toast.swal2-icon-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    color: white !important;
+}
+
+/* progress bar */
+.swal2-timer-progress-bar {
+    background: rgba(255,255,255,0.8) !important;
+}
