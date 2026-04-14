@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-color.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <title>Tất cả sản phẩm | IVY Shop</title>
+</head>
+
+<body>
+    <header id="header-page"
+        class="py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300">
+        <nav id="nav-left" class="flex gap-4 pl-5 text-black uppercase font-semibold text-[13px]">
+            <a href="#">Nam</a>
+            <a href="#">Nữ</a>
+            <a href="#">Trẻ em</a>
+            <a href="#" class="text-[#FF0000] hover:text-[#FF0000]">Siêu Sale</a>
+            <a href="#">Bộ Sưu Tập</a>
+            <a href="#">Về Chúng Tôi</a>
+        </nav>
+
+        <a href="index.html" class="logo absolute left-1/2 -translate-x-1/2 mt-2">
+            <img src="images/logo.png" alt="logo" class="w-[9rem]">
+        </a>
+
+        <nav id="nav-right" class="flex gap-5 pr-5">
+            <a href="#"><span class="material-symbols-outlined thin">favorite</span></a>
+            <a href="login.html"><span class="material-symbols-outlined thin">person</span></a>
+            <a href="#"><span class="material-symbols-outlined thin">shopping_basket</span></a>
+        </nav>
+    </header>
+
+    <main class="pt-[125px]">
+        <section class="w-[90%] mx-auto">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-5">
+                <a href="index.html" class="hover:text-[#AC2F33]">Trang chủ</a>
+                <span>/</span>
+                <span class="text-black">Sản phẩm mới</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-10 gap-8 items-start">
+                <article
+                    class="lg:col-span-3 rounded-3xl border border-gray-200 p-4 md:p-5 bg-gradient-to-b from-white to-gray-50 lg:sticky lg:top-[120px]">
+                    <h2 class="text-lg font-semibold mb-4 uppercase tracking-wide">Bộ lọc sản phẩm</h2>
+
+                    <div class="space-y-4">
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined thin absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">search</span>
+                            <input id="filter-search" type="search" placeholder="Tìm theo tên sản phẩm"
+                                class="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 bg-white focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black text-sm">
+                        </div>
+
+                        <select id="sort-select"
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10">
+                            <option value="newest">Mới nhất</option>
+                            <option value="price-asc">Giá: Thấp đến cao</option>
+                            <option value="price-desc">Giá: Cao đến thấp</option>
+                            <option value="name-asc">Tên: A - Z</option>
+                        </select>
+
+                        <select id="price-select"
+                            class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10">
+                            <option value="all">Tất cả mức giá</option>
+                            <option value="lt-800">Dưới 800.000đ</option>
+                            <option value="800-1000">800.000đ - 1.000.000đ</option>
+                            <option value="gt-1000">Trên 1.000.000đ</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <button data-quick-filter="all"
+                            class="quick-filter px-4 py-2 rounded-full border border-gray-300 text-sm bg-black text-white">Tất cả</button>
+                        <button data-quick-filter="sale"
+                            class="quick-filter px-4 py-2 rounded-full border border-gray-300 text-sm hover:bg-black hover:text-white">Giảm giá</button>
+                        <button data-quick-filter="in-stock"
+                            class="quick-filter px-4 py-2 rounded-full border border-gray-300 text-sm hover:bg-black hover:text-white">Còn hàng</button>
+                        <button data-quick-filter="size-m"
+                            class="quick-filter px-4 py-2 rounded-full border border-gray-300 text-sm hover:bg-black hover:text-white">Size M</button>
+                        <button data-quick-filter="color-dark"
+                            class="quick-filter px-4 py-2 rounded-full border border-gray-300 text-sm hover:bg-black hover:text-white">Màu tối</button>
+                    </div>
+
+                    <button id="reset-filter"
+                        class="mt-5 w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm hover:bg-black hover:text-white">
+                        Reset bộ lọc
+                    </button>
+                </article>
+
+                <div class="lg:col-span-7">
+                    <div class="flex items-center justify-between mb-8">
+                        <h1 class="text-3xl uppercase">Sản phẩm mới</h1>
+                        <p id="all-items-count" class="text-sm text-gray-500">Đang tải sản phẩm...</p>
+                    </div>
+
+                    <ul id="all-products-list" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"></ul>
+                    <div class="flex justify-center mt-10">
+                        <button id="load-more-btn"
+                            class="hidden inline-flex items-center justify-center bg-white text-black border border-gray-400 py-2 px-7 rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-colors">
+                            Xem thêm sản phẩm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="js/products.js"></script>
+    <script src="js/all-items.js"></script>
+    <script src="js/header-hide.js"></script>
+</body>
+
+</html>

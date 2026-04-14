@@ -1,0 +1,111 @@
+[
+  {
+    "id": "soft-ivy-top",
+    "name": "Soft IVY Top - Áo sơ mi dáng vest",
+    "brand": "IVY Fashion",
+    "category": "Nữ",
+    "newPrice": 903000,
+    "oldPrice": 1290000,
+    "stock": 12,
+    "description": "Thiết kế áo sơ mi dáng vest thanh lịch, chất liệu mềm nhẹ và đứng form. Phù hợp mặc đi làm, đi chơi hoặc phối layer trong các dịp đặc biệt.",
+    "materialCare": "Chất liệu Butter Silk cao cấp. Khuyến nghị giặt tay hoặc giặt máy chế độ nhẹ, không tẩy, ủi ở nhiệt độ thấp và phơi nơi thoáng mát.",
+    "returnPolicy": "Hỗ trợ đổi trả trong vòng 30 ngày với sản phẩm còn tem, chưa qua sử dụng và có hóa đơn mua hàng hợp lệ.",
+    "images": [
+      "images/soft-ivy-top1.png",
+      "images/ao-kieu-butter-silk.png",
+      "images/dam-co-xep-in-hoa.png",
+      "images/dam-hoa-tiet-springlight-floral.png"
+    ],
+    "colors": [
+      { "name": "Vàng hoa cúc", "hex": "#FEEA7B" },
+      { "name": "Đen", "hex": "#1C1C1C" },
+      { "name": "Trắng kem", "hex": "#F4EFE3" }
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": "butter-silk-top",
+    "name": "Áo kiểu Butter Silk",
+    "brand": "IVY Fashion",
+    "category": "Nữ",
+    "newPrice": 850000,
+    "oldPrice": null,
+    "stock": 9,
+    "description": "Áo kiểu form gọn gàng, tạo hiệu ứng thanh lịch và dễ phối với chân váy hoặc quần tây.",
+    "materialCare": "Vải lụa mềm nhẹ, thông thoáng. Giặt chế độ nhẹ, hạn chế vắt mạnh và phơi trong bóng râm.",
+    "returnPolicy": "Đổi trả trong 30 ngày theo quy định của IVY Shop.",
+    "images": [
+      "images/ao-kieu-butter-silk.png",
+      "images/soft-ivy-top1.png",
+      "images/dam-co-xep-in-hoa.png"
+    ],
+    "colors": [
+      { "name": "Vàng hoa cúc", "hex": "#FEEA7B" }
+    ],
+    "sizes": ["S", "M", "L"]
+  },
+  {
+    "id": "dam-co-xep-in-hoa",
+    "name": "Đầm cổ xếp in hoa",
+    "brand": "IVY Fashion",
+    "category": "Nữ",
+    "newPrice": 716000,
+    "oldPrice": 1790000,
+    "stock": 7,
+    "description": "Đầm cổ xếp in hoa nữ tính, tôn dáng và mang lại cảm giác nhẹ nhàng cho ngày cuối tuần.",
+    "materialCare": "Chất liệu voan mềm, nên giặt tay và ủi hơi nhiệt độ thấp để giữ form.",
+    "returnPolicy": "Đổi trả trong 30 ngày với sản phẩm chưa qua sử dụng.",
+    "images": [
+      "images/dam-co-xep-in-hoa.png",
+      "images/dam-hoa-tiet-springlight-floral.png",
+      "images/dam-xoe-dao-pho-bliss-dress.png"
+    ],
+    "colors": [
+      { "name": "Vàng hoa cúc", "hex": "#FEEA7B" },
+      { "name": "Hồng san hô", "hex": "#F6D6D6" }
+    ],
+    "sizes": ["S", "M", "L"]
+  },
+  {
+    "id": "springlight-floral-dress",
+    "name": "Đầm họa tiết Springlight Floral",
+    "brand": "IVY Fashion",
+    "category": "Nữ",
+    "newPrice": 1690000,
+    "oldPrice": null,
+    "stock": 5,
+    "description": "Đầm họa tiết Springlight Floral nổi bật với họa tiết sáng và form xòe nhẹ nữ tính.",
+    "materialCare": "Nên giặt tay, tránh ngồi lâu để giữ màu họa tiết bền đẹp.",
+    "returnPolicy": "Đổi trả trong 30 ngày theo điều kiện sản phẩm còn nguyên vẹn.",
+    "images": [
+      "images/dam-hoa-tiet-springlight-floral.png",
+      "images/dam-co-xep-in-hoa.png",
+      "images/dam-xoe-dao-pho-bliss-dress.png"
+    ],
+    "colors": [
+      { "name": "Họa tiết bạc hà", "hex": "#C9D8B6" }
+    ],
+    "sizes": ["S", "M", "L"]
+  },
+  {
+    "id": "bliss-dress",
+    "name": "Đầm xòe dạo phố - Bliss Dress",
+    "brand": "IVY Fashion",
+    "category": "Nữ",
+    "newPrice": 876000,
+    "oldPrice": 2190000,
+    "stock": 11,
+    "description": "Đầm xòe dạo phố với thiết kế bay bổng, hợp cho những ngày hẹn hò và dạo phố.",
+    "materialCare": "Vải mềm, dễ bảo quản. Giặt nhẹ, tránh sấy nóng và ủi thấp.",
+    "returnPolicy": "Áp dụng chính sách đổi trả 30 ngày tại hệ thống IVY Shop.",
+    "images": [
+      "images/dam-xoe-dao-pho-bliss-dress.png",
+      "images/dam-hoa-tiet-springlight-floral.png",
+      "images/dam-co-xep-in-hoa.png"
+    ],
+    "colors": [
+      { "name": "Trắng", "hex": "#FFFFFF" }
+    ],
+    "sizes": ["S", "M", "L"]
+  }
+]

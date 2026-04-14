@@ -1,0 +1,98 @@
+.pd-breadcrumb a:hover {
+  color: #ac2f33;
+}
+
+.pd-gallery-main {
+  border-radius: 28px;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.pd-thumb {
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pd-thumb.active {
+  border-color: #111;
+}
+
+/* .pd-info-card {
+  border: 1px solid #ececec;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.06);
+} */
+
+.pd-color-item {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pd-color-item.active {
+  border: 2px solid #111;
+}
+
+.pd-size-item {
+  min-width: 48px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pd-size-item.active {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+
+.pd-qty button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.pd-qty span {
+  min-width: 38px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pd-accordion-item {
+  border-top: 1px solid #ececec;
+}
+
+.pd-accordion-trigger {
+  width: 100%;
+  padding: 14px 0;
+  text-align: left;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pd-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  color: #555;
+  line-height: 1.6;
+}
+
+.pd-accordion-item.active .pd-accordion-content {
+  max-height: 200px;
+  padding-bottom: 14px;
+}
+
+.pd-accordion-item.active .pd-accordion-icon {
+  transform: rotate(180deg);
+}
