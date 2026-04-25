@@ -1,0 +1,55 @@
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+.swiper-slide {
+    height: auto;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 639px) {
+    .swiper-slide {
+        width: 75% !important;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    .swiper-slide {
+        width: calc(50% - 12px) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .swiper-slide {
+        width: calc(20% - 20px) !important;
+    }
+}
+
+.swiper-button-prev,
+        .swiper-button-next {
+            display: none;
+        }
+
+        /* Chỉ hiện trên desktop */
+        @media (min-width: 1024px) {
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: flex;
+                color: #000;
+                position: absolute;
+            }
+
+            .swiper-button-prev {
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .swiper-button-next {
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }

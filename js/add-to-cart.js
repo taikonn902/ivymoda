@@ -112,6 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let totalQuantity = 0;
         let total = 0;
 
+        if (cart.length === 0) {
+            cartItems.innerHTML = `
+                <div class="flex flex-col items-center justify-center text-center">
+                    <img src="/images/null-cart.jpg" class="absolute h-full poiter-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                </div>
+            `;
+
+            return;
+        }
+
         cart.forEach(item => {
 
             const priceNumber = parseInt(item.price.replace(/\D/g, ''));

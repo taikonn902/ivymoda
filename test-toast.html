@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Sileo Toast đúng workflow</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.toast {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.35s ease;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* message */
+.toast-message {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+.toast.expand .toast-message {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="flex gap-4">
+    <button onclick="test('success')" class="px-4 py-2 bg-green-500 text-white rounded">Success</button>
+    <button onclick="test('error')" class="px-4 py-2 bg-red-500 text-white rounded">Error</button>
+    <button onclick="test('warning')" class="px-4 py-2 bg-yellow-500 text-white rounded">Warning</button>
+</div>
+
+<div id="toast-root" class="fixed bottom-10 right-10 z-50"></div>
+
+<script>
+let currentToast = null;
+let removeTimeout = null;
+let expandTimeout = null;
+
+function showToast({ type, title, message }) {
+
+    const config = {
+        success: { 
+            icon: `
+            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>`
+        },
+        error: { 
+            icon: `
+            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>`
+        },
+        warning: { 
+            icon: `
+            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86l-7.4 12.8A1 1 0 003.76 18h16.48a1 1 0 00.87-1.34l-7.4-12.8a1 1 0 00-1.74 0z"/>
+            </svg>`
+        }
+    };
+
+    const root = document.getElementById('toast-root');
+
+    // 🔁 Nếu đã có toast → update, KHÔNG animate lại toast
+    if (currentToast) {
+        clearTimeout(removeTimeout);
+        clearTimeout(expandTimeout);
+
+        // reset trạng thái message
+        currentToast.classList.remove('expand');
+
+        currentToast.innerHTML = `
+            <div class="toast-message text-sm text-gray-300 leading-relaxed">
+                ${message}
+            </div>
+
+            <div class="flex items-center gap-3 font-medium">
+                ${config[type].icon}
+                <span>${title}</span>
+            </div>
+        `;
+
+        // force reflow để animation message chạy lại
+        void currentToast.offsetHeight;
+
+        expandTimeout = setTimeout(() => {
+            currentToast.classList.add('expand');
+        }, 100);
+
+    } else {
+        // 🆕 lần đầu → có animation
+        currentToast = document.createElement('div');
+        currentToast.className = `
+            toast relative bg-[#111] text-white
+            rounded-[24px] px-6 py-4 w-[360px] shadow-2xl
+        `;
+
+        currentToast.innerHTML = `
+            <div class="toast-message text-sm text-gray-300 leading-relaxed">
+                ${message}
+            </div>
+
+            <div class="flex items-center gap-3 font-medium">
+                ${config[type].icon}
+                <span>${title}</span>
+            </div>
+        `;
+
+        root.appendChild(currentToast);
+
+        setTimeout(() => currentToast.classList.add('show'), 30);
+
+        expandTimeout = setTimeout(() => {
+            currentToast.classList.add('expand');
+        }, 350);
+    }
+
+    // ⏳ reset thời gian sống
+    removeTimeout = setTimeout(() => {
+        currentToast.classList.remove('show');
+        setTimeout(() => {
+            currentToast.remove();
+            currentToast = null;
+        }, 300);
+    }, 4500);
+}
+
+function test(type) {
+    const data = {
+        success: {
+            title: 'Thành Công',
+            message: 'Đã thêm sản phẩm vào giỏ hàng!'
+        },
+        error: {
+            title: 'Thất Bại',
+            message: 'Không thể thao tác. Hãy thử lại sau!'
+        },
+        warning: {
+            title: 'Cảnh Báo',
+            message: 'Hành động này không thể hoàn tác. Bạn có chắc muốn tiếp tục?'
+        }
+    };
+
+    showToast({ type, ...data[type] });
+}
+</script>
+
+</body>
+</html>
