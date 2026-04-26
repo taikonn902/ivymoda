@@ -37,7 +37,7 @@
 <body>
     <!-- desktop header -->
     <header id="header-page"
-        class="py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300">
+        class="hidden md:flex py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300">
         <nav id="nav-left" class="flex gap-4 pl-5 text-black uppercase font-semibold text-[13px]">
             <a href="#">Nam</a>
             <a href="#">Nữ</a>
@@ -115,11 +115,50 @@
         </div>
     </header>
 
+    <!-- MOBILE HEADER -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div class=" mx-auto px-4 py-4 flex items-center justify-between">
+
+            <!-- Logo -->
+            <div class="text-xl font-bold tracking-wide">
+                <img src="images/logo-mobile.png" alt="" class="w-[60px] h-[60px]">
+            </div>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
+                <a href="#" class="hover:text-black transition">Trang chủ</a>
+                <a href="#" class="hover:text-black transition">Sản phẩm</a>
+                <a href="#" class="hover:text-black transition">Bộ sưu tập</a>
+                <a href="#" class="hover:text-black transition">Liên hệ</a>
+            </nav>
+
+            <!-- Right Icons -->
+            <div class="flex items-center gap-4">
+
+                <!-- Search -->
+                <button class="hidden md:block">
+                    🔍
+                </button>
+
+                <!-- Cart -->
+                <button class="hidden md:block">
+                    🛒
+                </button>
+
+                <!-- Hamburger (Mobile) -->
+                <button id="menuBtn" class="md:hidden text-2xl">
+                    ☰
+                </button>
+
+            </div>
+        </div>
+    </header>
+
     <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 opacity-0 invisible transition-all duration-300"></div>
 
     <!-- CART PANEL -->
     <div id="cart-panel"
-        class="fixed top-0 right-0 h-full w-[380px] bg-white z-50 translate-x-full transition-transform duration-300 shadow-xl flex flex-col">
+        class="hidden md:block fixed top-0 right-0 h-full w-[380px] bg-white z-50 translate-x-full transition-transform duration-300 shadow-xl flex flex-col">
 
         <div class="flex justify-between items-center p-4 border-b">
             <h2 class="text-lg font-semibold">Giỏ hàng</h2>
@@ -147,8 +186,9 @@
     <div id="toast-root" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3"></div>
 
     <main id="main-page" class="pt-[120px]">
-        <section id="banner-page" class="w-[90%] mx-auto relative overflow-hidden rounded-tl-[20px] rounded-br-[20px]   /* mobile */ md:rounded-tl-[70px] md:rounded-br-[70px]  /* desktop */" style="height:calc(100vh-80px)">
-
+        <section id="banner-page"
+            class="hidden md:block w-[90%] mx-auto relative overflow-hidden rounded-tl-[20px] rounded-br-[20px]   /* mobile */ md:rounded-tl-[70px] md:rounded-br-[70px]  /* desktop */"
+            style="height:calc(100vh-80px)">
             <!-- SLIDER -->
             <div id="banner-slider" class="flex transition-transform duration-700 ease-in-out w-full h-full">
 
@@ -191,24 +231,27 @@
                 </span>
             </button>
 
-            <!-- DOTS -->
-            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-                <button class="dot w-10 h-[3px] bg-white/40 rounded overflow-hidden">
+            <div class="absolute bottom-[4px] md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
+
+                <button class="dot w-6 md:w-10 h-[2px] md:h-[3px] bg-white/40 rounded overflow-hidden">
                     <div class="dot-inner h-full bg-white w-0"></div>
                 </button>
-                <button class="dot w-10 h-[3px] bg-white/40 rounded overflow-hidden">
+
+                <button class="dot w-6 md:w-10 h-[2px] md:h-[3px] bg-white/40 rounded overflow-hidden">
                     <div class="dot-inner h-full bg-white w-0"></div>
                 </button>
-                <button class="dot w-10 h-[3px] bg-white/40 rounded overflow-hidden">
+
+                <button class="dot w-6 md:w-10 h-[2px] md:h-[3px] bg-white/40 rounded overflow-hidden">
                     <div class="dot-inner h-full bg-white w-0"></div>
                 </button>
+
             </div>
 
             </div>
         </section>
 
-        <section id="new-product" class="flex flex-col items-center mt-[60px] mb-10">
-            <h1 class="text-3xl mb-10 uppercase ">New products</h1>
+        <section id="new-product" class="flex flex-col items-center mt-[10px] md:mt-[60px] mb-10">
+            <h1 class="text-xl sm:text-2xl md:text-3xl mb-10 uppercase">New products</h1>
 
             <div class="relative w-[90%] swiper overflow-visible new-product-swiper">
 
@@ -425,14 +468,15 @@
                     </li>
                 </ul>
             </div>
+
             <a href="all-items.html"
-                class="inline-flex items-center justify-center bg-white text-black border border-gray-400 py-2 px-6 rounded-tl-none rounded-br-none rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-colors w-[50%] md:w-[20%] mt-12 h-[50px] text-lg uppercase">
+                class="inline-flex items-center justify-center bg-white text-black border border-gray-400 py-2 px-6 rounded-tl-none rounded-br-none rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-colors w-[50%] md:w-[20%] mt-12 h-[50px] text-base md:text-lg uppercase">
                 Xem thêm
             </a>
         </section>
 
         <section id="flash-sale" class="flex flex-col items-center mt-[60px] mb-10">
-            <h1 class="text-3xl mb-10 uppercase ">Middle season sale | sale 30% all item</h1>
+            <h1 class="text-xl sm:text-2xl md:text-3xl mb-10 uppercase">Middle season sale | sale 30% all item</h1>
 
             <ul id="flash-sale-list" class="w-[90%] flex justify-between">
 

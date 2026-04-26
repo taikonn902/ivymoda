@@ -1,4 +1,3 @@
-
 #header-page {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 }
@@ -152,10 +151,8 @@
   font-weight: bold;
   font-size: 12px;
   padding: 6px 14px;
-  border-top-right-radius: 20px;
   z-index: 10;
 }
-
 
 .badge-ribbon::before {
   content: "";
@@ -168,25 +165,24 @@
   border-left: 6px solid transparent;
 }
 
-
 .size-item {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .size-item.active {
-    border: 1px solid #000;
-    font-weight: 600;
+  border: 1px solid #000;
+  font-weight: 600;
 }
 
 .size-item.active::after {
-    content: "✔";
-    position: absolute;
-    font-size: 10px;
+  content: "✔";
+  position: absolute;
+  font-size: 10px;
 }

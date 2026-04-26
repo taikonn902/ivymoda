@@ -19,83 +19,52 @@
 
 <body class="bg-white">
     <main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white p-4">
-
-        <div
-            class="w-full max-w-6xl grid md:grid-cols-2 rounded-[32px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+        <div class="relative w-full max-w-6xl grid md:grid-cols-2 rounded-[32px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+            <button onclick="history.back()" class="group absolute top-5 right-5 z-10  w-12 h-12 rounded-full  bg-white/80 backdrop-blur-md  flex items-center justify-center text-black hover:bg-black transition">
+                <span class="material-symbols-outlined text-[24px] group-hover:text-white">
+                    close
+                </span>
+            </button>
 
             <!-- LEFT: LOGIN -->
             <div class="bg-white/80 backdrop-blur-xl p-8 md:p-12">
 
-                <!-- header -->
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="text-3xl font-semibold">Đăng nhập</h2>
-                    <button onclick="history.back()" class="w-10 h-10 rounded-full border border-gray-300
-           flex items-center justify-center
-           text-gray-600
-           hover:bg-black hover:text-white
-           active:scale-90
-           transition-all duration-200">
+                <div class="flex justify-center mb-4">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="images/logo-mobile.png" alt="logo" class="h-[100px] w-[100px] mb-2">
 
-                        <span class="material-symbols-outlined text-[20px] text-inherit">
-                            close
-                        </span>
-                    </button>
+                        <p class="text-xl text-gray-500 mb-1">Chào mừng quay trở lại!</p>
+                    </div>
                 </div>
 
-                <p class="text-sm text-gray-500 mb-8">
-                    Đăng nhập để theo dõi đơn hàng và nhận ưu đãi cá nhân hóa.
-                </p>
-
-                <!-- FORM -->
                 <form class="space-y-5">
-
-                    <!-- USER (floating label giữ nguyên style bạn) -->
                     <div class="relative">
-                        <input type="text" required placeholder=" " class="peer w-full px-4 py-3 rounded-xl border border-gray-300 bg-white/80
-                        focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition">
+                        <input id="username" type="text" required placeholder=" " autocomplete="off"
+                            class="peer w-full px-4 py-3 rounded-xl border border-gray-300 bg-white/80 focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition">
 
-                        <label class="absolute left-3 top-0 -translate-y-1/2 px-2 bg-white text-gray-400 text-sm
-                        transition-all duration-200 cursor-text
-                        peer-placeholder-shown:top-1/2
-                        peer-placeholder-shown:text-base
-                        peer-placeholder-shown:text-gray-400
-                        peer-placeholder-shown:-translate-y-1/2
-                        peer-focus:top-0
-                        peer-focus:-translate-y-1/2
-                        peer-focus:text-xs
-                        peer-focus:text-black">
+                        <label for="username"
+                            class="absolute left-3 top-0 -translate-y-1/2 px-2 bg-white text-gray-400 text-sm transition-all duration-200 cursor-text peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-black">
                             Tên người dùng
                         </label>
                     </div>
 
-                    <!-- PASSWORD -->
                     <div class="relative">
-                        <input type="password" required placeholder=" " class="peer w-full px-4 py-3 pr-20 rounded-xl border border-gray-300 bg-white/80
-                        focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition">
+                        <input id="password" type="password" required placeholder=" "
+                            class="peer w-full px-4 py-3 pr-20 rounded-xl border border-gray-300 bg-white/80 focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition">
 
-                        <label class="absolute left-3 top-0 -translate-y-1/2 px-2 bg-white text-gray-400 text-sm
-                        transition-all duration-200 cursor-text
-                        peer-placeholder-shown:top-1/2
-                        peer-placeholder-shown:text-base
-                        peer-placeholder-shown:text-gray-400
-                        peer-placeholder-shown:-translate-y-1/2
-                        peer-focus:top-0
-                        peer-focus:-translate-y-1/2
-                        peer-focus:text-xs
-                        peer-focus:text-black">
+                        <label for="password"
+                            class="absolute left-3 top-0 -translate-y-1/2 px-2 bg-white text-gray-400 text-sm transition-all duration-200 cursor-text peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-black">
                             Mật khẩu
                         </label>
 
                         <button type="button" id="toggle-password"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black flex items-center">
-
                             <span id="eye-icon" class="material-symbols-outlined text-[20px] leading-none">
                                 visibility
                             </span>
                         </button>
                     </div>
 
-                    <!-- OPTIONS -->
                     <div class="flex items-center justify-between text-sm">
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="accent-black w-4 h-4">
@@ -104,22 +73,15 @@
                         <a href="#" class="hover:text-[#AC2F33]">Quên mật khẩu?</a>
                     </div>
 
-                    <!-- BUTTON -->
-                    <button type="submit" class="w-full py-3.5 bg-black text-white rounded-xl
-                    hover:bg-gray-900 active:scale-[0.98] transition-all duration-200 shadow-lg shadow-black/20">
-                        Đăng nhập
-                    </button>
-
+                    <button type="submit" class="w-full py-3.5  bg-white text-black  border border-gray-300 rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 shadow-lg shadow-black/10 uppercase font-semibold">Đăng nhập</button>
                 </form>
 
-                <!-- divider -->
                 <div class="mt-8 mb-6 flex items-center gap-3 text-sm text-gray-400">
                     <span class="h-px bg-gray-200 flex-1"></span>
                     <span>Hoặc</span>
                     <span class="h-px bg-gray-200 flex-1"></span>
                 </div>
 
-                <!-- SOCIAL -->
                 <div class="grid grid-cols-2 gap-3">
                     <button class="h-12 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
                         Google
@@ -129,12 +91,10 @@
                     </button>
                 </div>
 
-                <!-- register -->
                 <p class="text-sm text-center mt-7">
                     Bạn chưa có tài khoản?
                     <a href="register.html" class="font-semibold hover:text-[#AC2F33]">Đăng ký</a>
                 </p>
-
             </div>
 
             <!-- RIGHT: IMAGE -->
@@ -142,23 +102,14 @@
 
                 <img src="images/login.png" class="w-full h-full object-cover" />
 
-                <!-- overlay -->
                 <div class="absolute inset-0 bg-black/40"></div>
 
-                <!-- content -->
                 <div class="absolute bottom-10 left-10 text-white max-w-sm">
-
-                    <p class="text-sm text-white/80">
-                        Khám phá bộ sưu tập mới và nhận ưu đãi dành riêng cho bạn.
-                    </p>
+                    <p class="text-sm text-white/80">Khám phá bộ sưu tập mới và nhận ưu đãi dành riêng cho bạn.</p>
                 </div>
-
             </div>
-
         </div>
-
     </main>
-
 
     <script>
         const passwordInput = document.querySelector('input[type="password"]');
