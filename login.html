@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <form class="space-y-5">
+                <form id="login-form" class="space-y-5">
                     <div class="relative">
                         <input id="username" type="text" required placeholder=" " autocomplete="off"
                             class="peer w-full px-4 py-3 rounded-xl border border-gray-300 bg-white/80 focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition">
@@ -115,14 +115,60 @@
         const passwordInput = document.querySelector('input[type="password"]');
         const toggleBtn = document.getElementById('toggle-password');
         const icon = document.getElementById('eye-icon');
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('username');
+        const testAccount = {
+            email: 'admin@gmail.com',
+            password: '123456',
+            username: 'admin@gmail.com'
+        };
 
-        toggleBtn.addEventListener('click', () => {
+        // Seed test account so it is always available for quick QA.
+        localStorage.setItem('seed_test_account', JSON.stringify(testAccount));
+
+        toggleBtn?.addEventListener('click', () => {
             const isHidden = passwordInput.type === 'password';
 
             passwordInput.type = isHidden ? 'text' : 'password';
 
             // đổi icon
             icon.textContent = isHidden ? 'visibility_off' : 'visibility';
+        });
+
+        loginForm?.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const userValue = usernameInput?.value.trim() || '';
+            const passValue = passwordInput?.value || '';
+            const canLogin = (userValue.toLowerCase() === testAccount.email && passValue === testAccount.password);
+
+            if (!canLogin) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Đăng nhập thất bại',
+                    text: 'Sai tài khoản hoặc mật khẩu.'
+                });
+                return;
+            }
+
+            const authUser = {
+                email: testAccount.email,
+                username: testAccount.username,
+                name: 'Admin'
+            };
+
+            localStorage.setItem('authUser', JSON.stringify(authUser));
+            localStorage.setItem('currentUser', JSON.stringify(authUser));
+            localStorage.setItem('username', authUser.username);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng nhập thành công',
+                timer: 900,
+                showConfirmButton: false
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
         });
     </script>
 </body>

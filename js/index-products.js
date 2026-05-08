@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         link.href = createProductLink(product.id);
       }
     });
+
+    document.dispatchEvent(new Event("new-products:links-bound"));
   } catch (error) {
     console.error("Failed to bind product links:", error);
   }

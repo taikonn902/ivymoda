@@ -24,6 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -33,10 +35,11 @@
 
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
+
     <title>IVY Shop</title>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
     <!-- desktop header -->
     <header id="header-page"
         class="hidden md:flex py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-[70] bg-white transition-transform duration-300">
@@ -97,17 +100,35 @@
                     </div>
                 </div>
             </form>
-            
+
             <nav id="nav-right" class="flex gap-2 pr-5">
-                <a href="#">
+                <a href="favorites.html">
                     <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:50px">
                     </lord-icon>
                 </a>
 
-                <a href="login.html">
-                    <lord-icon src="https://cdn.lordicon.com/bushiqea.json" trigger="hover"
-                        style="width:50px"></lord-icon>
-                </a>
+                <div id="desktop-user-menu" class="relative group flex items-center">
+                    <a id="desktop-user-login-link" href="login.html"
+                        class="inline-flex items-center justify-center h-[50px]">
+                        <lord-icon src="https://cdn.lordicon.com/bushiqea.json" trigger="hover"
+                            style="width:50px"></lord-icon>
+                    </a>
+
+                    <button id="desktop-user-trigger" type="button"
+                        class="hidden w-11 h-11 rounded-full border-2 border-gray-400 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-100 shadow-sm items-center justify-center uppercase">
+                        <span id="desktop-user-initial">U</span>
+                    </button>
+
+                    <div id="desktop-user-dropdown" class="hidden">
+                        <div
+                            class="hidden md:block absolute right-0 top-full mt-2 min-w-[150px] rounded-lg border border-gray-200 bg-white shadow-md opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+                            <button id="desktop-logout-btn" type="button"
+                                class="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                                Đăng xuất
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <a href="#" id="cart-btn" class="relative">
                     <lord-icon src="https://cdn.lordicon.com/zmvzumis.json" trigger="hover"
@@ -122,7 +143,7 @@
     </header>
 
     <!-- mobile header -->
-    <header
+    <header id="mobile-header"
         class="md:hidden fixed top-0 left-0 w-full z-[70] bg-white border-b border-gray-200 flex items-center justify-between px-4 h-[72px]">
         <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
             class="inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100">
@@ -148,9 +169,9 @@
 
     <!-- mobile menu -->
     <div id="mobile-menu-overlay"
-        class="md:hidden fixed inset-0 bg-black/40 z-[60] opacity-0 invisible transition-all duration-300"></div>
+        class="md:hidden fixed inset-0 bg-black/40 z-[80] opacity-0 invisible transition-all duration-300"></div>
     <aside id="mobile-menu"
-        class="md:hidden fixed top-0 left-0 w-[82%] max-w-[320px] h-full bg-white z-[61] -translate-x-full transition-transform duration-300 shadow-xl">
+        class="md:hidden fixed inset-0 w-full h-full bg-white z-[81] -translate-x-full transition-transform duration-300 shadow-xl">
         <div class="flex items-center justify-between p-4 border-b">
             <img src="images/logo.png" alt="logo" class="w-[6.5rem]">
             <button id="mobile-menu-close" type="button"
@@ -166,6 +187,24 @@
             <a href="#">Bộ Sưu Tập</a>
             <a href="#">Về Chúng Tôi</a>
         </nav>
+        <div class="mx-4 border-t border-gray-200"></div>
+        <div id="mobile-user-panel" class="hidden p-4">
+            <div class="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                <p id="mobile-user-greeting" class="text-sm font-medium text-gray-800 mb-3"></p>
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="#" id="mobile-favorite-btn"
+                        class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-pink-200 bg-white px-3 py-2 text-sm font-medium text-pink-600 hover:bg-pink-50 transition">
+                        <span class="material-symbols-outlined text-[18px]">favorite</span>
+                        <span>Yêu thích</span>
+                    </a>
+                    <button id="mobile-logout-btn" type="button"
+                        class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                        <span class="material-symbols-outlined text-[18px]">logout</span>
+                        <span>Đăng xuất</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </aside>
 
     <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 opacity-0 invisible transition-all duration-300"></div>
@@ -192,9 +231,10 @@
                 <span>Tổng:</span>
                 <span id="cart-price">0đ</span>
             </div>
-            <button class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
+            <a href="checkout.html"
+                class="w-full bg-black text-white py-2 rounded hover:bg-gray-800 inline-flex items-center justify-center">
                 Thanh toán
-            </button>
+            </a>
         </div>
     </div>
 
@@ -284,8 +324,11 @@
                                     data-color="Vàng hoa cúc"></button>
                                 <button class="color-item" style="background:#222" data-color="Đen"></button>
                             </div>
-                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
-                                class="cursor-pointer"></lord-icon>
+                            <button type="button"
+                                class="favorite-toggle inline-flex h-9 w-9 items-center justify-center text-black transition-colors"
+                                aria-label="Thêm vào yêu thích">
+                                <i class="fa-regular fa-heart text-[20px] leading-none"></i>
+                            </button>
                         </div>
 
 
@@ -328,8 +371,11 @@
                                 <button class="color-item" style="background:#FEEA7B"
                                     data-color="Vàng hoa cúc"></button>
                             </div>
-                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
-                                class="cursor-pointer"></lord-icon>
+                            <button type="button"
+                                class="favorite-toggle inline-flex h-9 w-9 items-center justify-center text-black transition-colors"
+                                aria-label="Thêm vào yêu thích">
+                                <i class="fa-regular fa-heart text-[20px] leading-none"></i>
+                            </button>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Áo Kiểu Butter Silk</p>
@@ -369,8 +415,11 @@
                                     data-color="Vàng hoa cúc"></button>
                                 <button class="color-item" style="background:#F6D6D6" data-color="Hồng san hô"></button>
                             </div>
-                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
-                                class="cursor-pointer"></lord-icon>
+                            <button type="button"
+                                class="favorite-toggle inline-flex h-9 w-9 items-center justify-center text-black transition-colors"
+                                aria-label="Thêm vào yêu thích">
+                                <i class="fa-regular fa-heart text-[20px] leading-none"></i>
+                            </button>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm cổ xếp in hoa</p>
@@ -411,8 +460,11 @@
                                 <button class="color-item" style="background:#C9D8B6"
                                     data-color="Họa tiết bạc hà"></button>
                             </div>
-                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
-                                class="cursor-pointer"></lord-icon>
+                            <button type="button"
+                                class="favorite-toggle inline-flex h-9 w-9 items-center justify-center text-black transition-colors"
+                                aria-label="Thêm vào yêu thích">
+                                <i class="fa-regular fa-heart text-[20px] leading-none"></i>
+                            </button>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm họa tiết Springlight
@@ -451,8 +503,11 @@
                             <div class="product-colors">
                                 <button class="color-item" style="background:#FFFFFF" data-color="Trắng"></button>
                             </div>
-                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
-                                class="cursor-pointer"></lord-icon>
+                            <button type="button"
+                                class="favorite-toggle inline-flex h-9 w-9 items-center justify-center text-black transition-colors"
+                                aria-label="Thêm vào yêu thích">
+                                <i class="fa-regular fa-heart text-[20px] leading-none"></i>
+                            </button>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm Xòe Dạo PhỐ - Bliss
@@ -651,27 +706,15 @@
                                 </label>
                             </div>
 
-                            <!-- BUTTON -->
                             <button type="submit"
-                                class="relative block ml-auto w-[60%] py-3 font-medium tracking-wide bg-white text-black border border-black rounded-tl-2xl rounded-br-2xl overflow-hidden transition-all duration-300 group hover:bg-black hover:text-white active:scale-[0.98] ">
-                                <span class="flex items-center justify-center gap-2">
+                                class="relative block ml-auto w-[45%] py-2 text-sm font-medium tracking-wide bg-white text-black border border-black rounded-tl-2xl rounded-br-2xl overflow-hidden transition-all duration-300 group hover:bg-black hover:text-white active:scale-[0.98]">
 
-                                    <!-- text -->
+                                <span class="flex items-center justify-center gap-2">
                                     <span class="transition-colors duration-300 text-black group-hover:text-white">
                                         Đăng ký ngay
                                     </span>
-
-                                    <!-- icon -->
-                                    <span class="transition-all duration-300
-                     text-black group-hover:text-white
-                     group-hover:translate-x-1">
-                                        →
-                                    </span>
-
                                 </span>
-
                             </button>
-
                         </form>
 
                         <!-- PERKS (pill style) -->
@@ -748,6 +791,172 @@
             closeMobileMenu();
         }
     });
+
+    const getLoggedInUsername = () => {
+        const rawCandidates = [
+            localStorage.getItem("authUser"),
+            localStorage.getItem("currentUser"),
+            localStorage.getItem("user"),
+            localStorage.getItem("username"),
+            localStorage.getItem("userName"),
+            sessionStorage.getItem("authUser"),
+            sessionStorage.getItem("currentUser"),
+            sessionStorage.getItem("user"),
+            sessionStorage.getItem("username"),
+            sessionStorage.getItem("userName")
+        ].filter(Boolean);
+
+        for (const candidate of rawCandidates) {
+            try {
+                const parsed = JSON.parse(candidate);
+                const name = parsed?.username || parsed?.name || parsed?.fullName || parsed?.email;
+                if (typeof name === "string" && name.trim()) return name.trim();
+            } catch (_) {
+                if (typeof candidate === "string" && candidate.trim()) return candidate.trim();
+            }
+        }
+
+        return "";
+    };
+
+    const mobileUserPanel = document.getElementById("mobile-user-panel");
+    const mobileUserGreeting = document.getElementById("mobile-user-greeting");
+    const mobileLogoutBtn = document.getElementById("mobile-logout-btn");
+    const mobileFavoriteBtn = document.getElementById("mobile-favorite-btn");
+    const desktopUserLoginLink = document.getElementById("desktop-user-login-link");
+    const desktopUserTrigger = document.getElementById("desktop-user-trigger");
+    const desktopUserInitial = document.getElementById("desktop-user-initial");
+    const desktopLogoutBtn = document.getElementById("desktop-logout-btn");
+    const desktopUserDropdown = document.getElementById("desktop-user-dropdown");
+
+    const username = getLoggedInUsername();
+    if (username && mobileUserPanel && mobileUserGreeting) {
+        mobileUserGreeting.textContent = `Xin chào, ${username}`;
+        mobileUserPanel.classList.remove("hidden");
+    }
+
+    if (username && desktopUserLoginLink && desktopUserTrigger && desktopUserInitial) {
+        desktopUserLoginLink.classList.add("hidden");
+        desktopUserTrigger.classList.remove("hidden");
+        desktopUserTrigger.classList.add("inline-flex");
+        desktopUserInitial.textContent = username.trim().charAt(0).toUpperCase();
+        desktopUserDropdown?.classList.remove("hidden");
+    }
+
+    const FAVORITES_KEY = "favoriteProducts";
+    const getFavoriteProducts = () => JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+    const saveFavoriteProducts = (items) => localStorage.setItem(FAVORITES_KEY, JSON.stringify(items));
+    const getProductIdFromLink = (href) => {
+        try {
+            const url = new URL(href, window.location.origin);
+            return url.searchParams.get("id") || href;
+        } catch (_) {
+            return href;
+        }
+    };
+
+    const buildFavoriteItem = (card) => {
+        const productLink = card.querySelector("a");
+        const imageEl = card.querySelector("img");
+        const nameEl = card.querySelector("#product-name");
+        const priceEl = card.querySelector("#flash-sale-price-new");
+        const href = productLink?.getAttribute("href") || "#";
+
+        return {
+            id: getProductIdFromLink(href),
+            name: nameEl?.textContent?.trim() || "Sản phẩm",
+            price: priceEl?.textContent?.trim() || "0đ",
+            image: imageEl?.getAttribute("src") || "",
+            link: href
+        };
+    };
+
+    const renderFavoriteState = () => {
+        const favoriteIds = new Set(getFavoriteProducts().map((item) => item.id));
+        document.querySelectorAll("#new-product .product-item").forEach((card) => {
+            const favoriteBtn = card.querySelector(".favorite-toggle");
+            const icon = favoriteBtn?.querySelector("i");
+            const productLink = card.querySelector("a");
+            if (!favoriteBtn || !icon || !productLink) return;
+
+            const productId = getProductIdFromLink(productLink.getAttribute("href") || "");
+            const isFavorite = favoriteIds.has(productId);
+            favoriteBtn.classList.toggle("text-red-500", isFavorite);
+            favoriteBtn.classList.toggle("text-black", !isFavorite);
+            icon.classList.toggle("fa-solid", isFavorite);
+            icon.classList.toggle("fa-regular", !isFavorite);
+            icon.classList.add("fa-heart");
+        });
+    };
+
+    const askLoginToFavorite = async () => {
+        const result = await Swal.fire({
+            icon: "warning",
+            title: "Bạn cần đăng nhập",
+            text: "Vui lòng đăng nhập để sử dụng tính năng yêu thích.",
+            showCancelButton: true,
+            confirmButtonText: "Đăng nhập ngay",
+            cancelButtonText: "Để sau"
+        });
+        if (result.isConfirmed) {
+            window.location.href = "login.html";
+        }
+    };
+
+    document.querySelectorAll("#new-product .favorite-toggle").forEach((button) => {
+        button.addEventListener("click", async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const currentUsername = getLoggedInUsername();
+            if (!currentUsername) {
+                await askLoginToFavorite();
+                return;
+            }
+
+            const card = button.closest(".product-item");
+            if (!card) return;
+
+            const product = buildFavoriteItem(card);
+            const favorites = getFavoriteProducts();
+            const index = favorites.findIndex((item) => item.id === product.id);
+
+            if (index >= 0) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(product);
+            }
+
+            saveFavoriteProducts(favorites);
+            renderFavoriteState();
+        });
+    });
+
+    renderFavoriteState();
+    document.addEventListener("new-products:links-bound", renderFavoriteState);
+
+    mobileFavoriteBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = "favorites.html";
+    });
+
+    const logoutUser = () => {
+        [
+            "authUser",
+            "currentUser",
+            "user",
+            "username",
+            "userName"
+        ].forEach((key) => {
+            localStorage.removeItem(key);
+            sessionStorage.removeItem(key);
+        });
+
+        window.location.reload();
+    };
+
+    mobileLogoutBtn?.addEventListener("click", logoutUser);
+    desktopLogoutBtn?.addEventListener("click", logoutUser);
 </script>
 
 </html>

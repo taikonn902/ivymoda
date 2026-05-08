@@ -1,24 +1,29 @@
-// Hide header on scroll down, show on scroll up
+// Hide header on scroll down, show on scroll up (desktop + mobile)
 let lastScrollY = window.scrollY;
-const header = document.getElementById('header-page');
+const desktopHeader = document.getElementById('header-page');
+const mobileHeader = document.getElementById('mobile-header');
 let ticking = false;
 
+function setHeaderVisibility(isHidden) {
+  const method = isHidden ? 'add' : 'remove';
+  desktopHeader?.classList[method]('!-translate-y-full');
+  mobileHeader?.classList[method]('!-translate-y-full');
+}
+
 function handleHeaderScroll() {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY > lastScrollY && currentScrollY > 60) {
-    // Scroll down, hide header
-    header.classList.add('!-translate-y-full');
-  } else {
-    // Scroll up, show header
-    header.classList.remove('!-translate-y-full');
-  }
+  const currentScrollY = Math.max(window.scrollY, 0);
+  const isScrollingDown = currentScrollY > lastScrollY;
+  const isPastThreshold = currentScrollY > 60;
+
+  setHeaderVisibility(isScrollingDown && isPastThreshold);
+
   lastScrollY = currentScrollY;
   ticking = false;
 }
 
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', () => {
   if (!ticking) {
     window.requestAnimationFrame(handleHeaderScroll);
     ticking = true;
   }
-});
+}, { passive: true });

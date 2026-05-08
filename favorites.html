@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <title>Sản phẩm yêu thích | IVY Shop</title>
+</head>
+
+<body class="bg-[#f8f8f8]">
+    <header id="header-page"
+        class="py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300 border-b border-gray-100">
+        <nav id="nav-left" class="hidden lg:flex gap-4 pl-5 text-black uppercase font-semibold text-[13px]">
+            <a href="#">Nam</a>
+            <a href="#">Nữ</a>
+            <a href="#">Trẻ em</a>
+            <a href="#" class="text-[#FF0000] hover:text-[#FF0000]">Siêu Sale</a>
+            <a href="#">Bộ Sưu Tập</a>
+            <a href="#">Về Chúng Tôi</a>
+        </nav>
+
+        <a href="index.html" class="logo lg:absolute lg:left-1/2 lg:-translate-x-1/2 mt-1">
+            <img src="images/logo.png" alt="logo" class="w-[8rem] md:w-[9rem]">
+        </a>
+
+        <nav id="nav-right" class="flex gap-3 md:gap-5 pr-1 md:pr-5">
+            <a href="index.html"><span class="material-symbols-outlined thin">home</span></a>
+            <a href="all-items.html"><span class="material-symbols-outlined thin">storefront</span></a>
+            <a href="checkout.html"><span class="material-symbols-outlined thin">shopping_basket</span></a>
+        </nav>
+    </header>
+
+    <main class="pt-[110px] md:pt-[125px] pb-10">
+        <section class="w-[92%] md:w-[90%] mx-auto">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-5">
+                <a href="index.html" class="hover:text-[#AC2F33]">Trang chủ</a>
+                <span>/</span>
+                <span class="text-black">Sản phẩm yêu thích</span>
+            </div>
+
+            <div class="flex items-end justify-between gap-3 mb-6">
+                <div>
+                    <h1 class="text-2xl md:text-3xl uppercase">Danh sách yêu thích</h1>
+                    <p id="favorite-caption" class="text-sm text-gray-500 mt-1">0 sản phẩm</p>
+                </div>
+                <a href="all-items.html"
+                    class="h-[42px] px-4 inline-flex items-center justify-center rounded-xl border border-gray-300 text-sm hover:bg-gray-100 transition">
+                    Mua thêm
+                </a>
+            </div>
+
+            <ul id="favorites-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></ul>
+        </section>
+    </main>
+
+    <script src="js/header-hide.js"></script>
+    <script>
+        const FAVORITES_KEY = "favoriteProducts";
+        const favoritesList = document.getElementById("favorites-list");
+        const favoriteCaption = document.getElementById("favorite-caption");
+
+        const getLoggedInUsername = () => {
+            const rawCandidates = [
+                localStorage.getItem("authUser"),
+                localStorage.getItem("currentUser"),
+                localStorage.getItem("user"),
+                localStorage.getItem("username"),
+                localStorage.getItem("userName"),
+                sessionStorage.getItem("authUser"),
+                sessionStorage.getItem("currentUser"),
+                sessionStorage.getItem("user"),
+                sessionStorage.getItem("username"),
+                sessionStorage.getItem("userName")
+            ].filter(Boolean);
+
+            for (const candidate of rawCandidates) {
+                try {
+                    const parsed = JSON.parse(candidate);
+                    const name = parsed?.username || parsed?.name || parsed?.fullName || parsed?.email;
+                    if (typeof name === "string" && name.trim()) return name.trim();
+                } catch (_) {
+                    if (typeof candidate === "string" && candidate.trim()) return candidate.trim();
+                }
+            }
+
+            return "";
+        };
+
+        const username = getLoggedInUsername();
+        if (!username) {
+            Swal.fire({
+                icon: "warning",
+                title: "Bạn chưa đăng nhập",
+                text: "Vui lòng đăng nhập để xem sản phẩm yêu thích.",
+                showCancelButton: true,
+                confirmButtonText: "Đăng nhập ngay",
+                cancelButtonText: "Về trang chủ"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "login.html";
+                } else {
+                    window.location.href = "index.html";
+                }
+            });
+        }
+
+        const getFavorites = () => JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+        const setFavorites = (items) => localStorage.setItem(FAVORITES_KEY, JSON.stringify(items));
+
+        const renderFavorites = () => {
+            const favorites = getFavorites();
+            favoriteCaption.textContent = `${favorites.length} sản phẩm`;
+            favoritesList.innerHTML = "";
+
+            if (!favorites.length) {
+                favoritesList.innerHTML = `
+                    <li class="col-span-full rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-gray-500">
+                        Bạn chưa có sản phẩm yêu thích nào.
+                    </li>
+                `;
+                return;
+            }
+
+            favorites.forEach((item) => {
+                const li = document.createElement("li");
+                li.className = "rounded-2xl border border-gray-200 bg-white p-3";
+                li.innerHTML = `
+                    <a href="${item.link || "#"}" class="block">
+                        <img src="${item.image || ""}" alt="${item.name || "product"}"
+                            class="h-[300px] w-full object-cover rounded-xl">
+                    </a>
+                    <p class="mt-3 line-clamp-2 min-h-[48px]">${item.name || "Sản phẩm"}</p>
+                    <div class="mt-2 flex items-center justify-between gap-2">
+                        <span class="font-semibold">${item.price || "0đ"}</span>
+                        <button type="button" data-id="${item.id}"
+                            class="remove-favorite inline-flex items-center justify-center w-9 h-9 rounded-full border border-red-200 text-red-500 hover:bg-red-50 transition">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+                    </div>
+                `;
+                favoritesList.appendChild(li);
+            });
+
+            favoritesList.querySelectorAll(".remove-favorite").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const id = button.getAttribute("data-id");
+                    const nextFavorites = getFavorites().filter((item) => item.id !== id);
+                    setFavorites(nextFavorites);
+                    renderFavorites();
+                });
+            });
+        };
+
+        renderFavorites();
+    </script>
+</body>
+
+</html>

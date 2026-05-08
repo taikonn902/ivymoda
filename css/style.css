@@ -2,7 +2,30 @@
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 }
 
-#right-header a {
+#header-page,
+#mobile-header {
+  left: 0;
+  right: 0;
+  width: 100%;
+  isolation: isolate;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Keep product card vertical overflow, prevent horizontal page overflow */
+#new-product .new-product-swiper {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+#new-product .new-product-swiper .swiper-wrapper {
+  overflow: visible;
+}
+
+#right-header a:not(.hidden) {
   display: flex;
   align-items: center;
   justify-content: center;

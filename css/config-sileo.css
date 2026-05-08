@@ -30,3 +30,19 @@
 .swal2-timer-progress-bar {
     background: rgba(255,255,255,0.8) !important;
 }
+
+/* hide SweetAlert scrollbars */
+.swal2-container,
+.swal2-popup,
+.swal2-html-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.swal2-container::-webkit-scrollbar,
+.swal2-popup::-webkit-scrollbar,
+.swal2-html-container::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
