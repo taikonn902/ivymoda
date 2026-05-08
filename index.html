@@ -31,13 +31,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
     <title>IVY Shop</title>
 </head>
 
 <body>
     <!-- desktop header -->
     <header id="header-page"
-        class="hidden md:flex py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300">
+        class="hidden md:flex py-[1.5%] px-[3%] flex justify-between items-center text-black fixed top-0 left-0 w-full z-[70] bg-white transition-transform duration-300">
         <nav id="nav-left" class="flex gap-4 pl-5 text-black uppercase font-semibold text-[13px]">
             <a href="#">Nam</a>
             <a href="#">Nữ</a>
@@ -95,19 +97,23 @@
                     </div>
                 </div>
             </form>
-            <nav id="nav-right" class="flex gap-5 pr-5">
-                <a href="#"><span class="material-symbols-outlined thin">
-                        favorite
-                    </span></a>
-                <a href="login.html"><span class="material-symbols-outlined thin">
-                        person
-                    </span></a>
+            
+            <nav id="nav-right" class="flex gap-2 pr-5">
+                <a href="#">
+                    <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:50px">
+                    </lord-icon>
+                </a>
+
+                <a href="login.html">
+                    <lord-icon src="https://cdn.lordicon.com/bushiqea.json" trigger="hover"
+                        style="width:50px"></lord-icon>
+                </a>
+
                 <a href="#" id="cart-btn" class="relative">
-                    <span class="material-symbols-outlined thin">
-                        shopping_basket
-                    </span>
+                    <lord-icon src="https://cdn.lordicon.com/zmvzumis.json" trigger="hover"
+                        style="width:50px"></lord-icon>
                     <span
-                        class="cart-total absolute -top-0 -right-3 bg-red-600 text-white text-xs rounded-full flex items-center justify-center w-[20px] h-[20px]">0</span>
+                        class="cart-total absolute -top-0 -right-0 bg-red-600 text-white text-xs rounded-full flex items-center justify-center w-[20px] h-[20px]">0</span>
                 </a>
             </nav>
 
@@ -115,55 +121,64 @@
         </div>
     </header>
 
-    <!-- MOBILE HEADER -->
-    <header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50 h-[70px]">
-        <div class="mx-auto px-4 h-full flex items-center justify-between">
+    <!-- mobile header -->
+    <header
+        class="md:hidden fixed top-0 left-0 w-full z-[70] bg-white border-b border-gray-200 flex items-center justify-between px-4 h-[72px]">
+        <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
 
-            <!-- Logo -->
-            <div class="text-xl font-bold tracking-wide">
-                <img src="images/logo.png" alt="" class="h-[50]">
-            </div>
+        <a href="index.html" class="absolute left-1/2 -translate-x-1/2">
+            <img src="images/logo.png" alt="logo" class="w-[7.5rem]">
+        </a>
 
-            <!-- Desktop Menu -->
-            <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
-                <a href="#" class="hover:text-black transition">Trang chủ</a>
-                <a href="#" class="hover:text-black transition">Sản phẩm</a>
-                <a href="#" class="hover:text-black transition">Bộ sưu tập</a>
-                <a href="#" class="hover:text-black transition">Liên hệ</a>
-            </nav>
-
-            <!-- Right Icons -->
-            <div class="flex items-center gap-4">
-
-                <!-- Search -->
-                <button class="hidden md:block">
-                    🔍
-                </button>
-
-                <!-- Cart -->
-                <button class="hidden md:block">
-                    🛒
-                </button>
-
-                <!-- Hamburger (Mobile) -->
-                <button id="menuBtn" class="md:hidden text-2xl">
-                    ☰
-                </button>
-
-            </div>
-        </div>
+        <nav class="flex items-center gap-1">
+            <a href="login.html" class="inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100">
+                <lord-icon src="https://cdn.lordicon.com/bushiqea.json" trigger="hover" style="width:34px"></lord-icon>
+            </a>
+            <a href="#" id="cart-btn-mobile"
+                class="relative inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100">
+                <lord-icon src="https://cdn.lordicon.com/zmvzumis.json" trigger="hover" style="width:34px"></lord-icon>
+                <span
+                    class="cart-total absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full flex items-center justify-center w-[18px] h-[18px]">0</span>
+            </a>
+        </nav>
     </header>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu-overlay"
+        class="md:hidden fixed inset-0 bg-black/40 z-[60] opacity-0 invisible transition-all duration-300"></div>
+    <aside id="mobile-menu"
+        class="md:hidden fixed top-0 left-0 w-[82%] max-w-[320px] h-full bg-white z-[61] -translate-x-full transition-transform duration-300 shadow-xl">
+        <div class="flex items-center justify-between p-4 border-b">
+            <img src="images/logo.png" alt="logo" class="w-[6.5rem]">
+            <button id="mobile-menu-close" type="button"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="p-4 flex flex-col gap-4 uppercase font-semibold text-[14px]">
+            <a href="#">Nam</a>
+            <a href="#">Nữ</a>
+            <a href="#">Trẻ em</a>
+            <a href="#" class="text-[#FF0000]">Siêu Sale</a>
+            <a href="#">Bộ Sưu Tập</a>
+            <a href="#">Về Chúng Tôi</a>
+        </nav>
+    </aside>
 
     <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 opacity-0 invisible transition-all duration-300"></div>
 
     <!-- CART PANEL -->
     <div id="cart-panel"
-        class="hidden md:block fixed top-0 right-0 h-full w-[380px] bg-white z-50 translate-x-full transition-transform duration-300 shadow-xl flex flex-col">
+        class="fixed top-0 right-0 h-full w-full max-w-[380px] bg-white z-50 translate-x-full transition-transform duration-300 shadow-xl flex flex-col">
 
         <div class="flex justify-between items-center p-4 border-b">
             <h2 class="text-lg font-semibold">Giỏ hàng</h2>
-            <button id="close-cart" class="text-gray-500 hover:text-black">
-                ✕
+            <button id="close-cart">
+                <lord-icon src="https://cdn.lordicon.com/ebyacdql.json" trigger="hover" style="width:50px; height:50px"
+                    class="cursor-pointer"></lord-icon>
             </button>
         </div>
 
@@ -185,7 +200,7 @@
 
     <div id="toast-root" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3"></div>
 
-    <main id="main-page" class="pt-[120px]">
+    <main id="main-page" class="relative isolate z-0 pt-[90px] md:pt-[120px]">
         <section id="banner-page"
             class="hidden md:block w-[90%] mx-auto relative overflow-hidden rounded-tl-[20px] rounded-br-[20px]   /* mobile */ md:rounded-tl-[70px] md:rounded-br-[70px]  /* desktop */"
             style="height:calc(100vh-80px)">
@@ -250,10 +265,10 @@
             </div>
         </section>
 
-        <section id="new-product" class="flex flex-col items-center mt-[10px] md:mt-[60px] mb-10">
+        <section id="new-product" class="relative z-0 flex flex-col items-center mt-[10px] md:mt-[60px] mb-10">
             <h1 class="text-xl sm:text-2xl md:text-3xl mb-10 uppercase">New products</h1>
 
-            <div class="relative w-[90%] swiper overflow-visible new-product-swiper">
+            <div class="relative z-0 w-[90%] swiper overflow-visible new-product-swiper">
 
                 <ul class="flex swiper-wrapper">
                     <li class="product-item relative swiper-slide">
@@ -269,8 +284,8 @@
                                     data-color="Vàng hoa cúc"></button>
                                 <button class="color-item" style="background:#222" data-color="Đen"></button>
                             </div>
-                            <span
-                                class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
+                                class="cursor-pointer"></lord-icon>
                         </div>
 
 
@@ -313,8 +328,8 @@
                                 <button class="color-item" style="background:#FEEA7B"
                                     data-color="Vàng hoa cúc"></button>
                             </div>
-                            <span
-                                class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
+                                class="cursor-pointer"></lord-icon>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Áo Kiểu Butter Silk</p>
@@ -354,8 +369,8 @@
                                     data-color="Vàng hoa cúc"></button>
                                 <button class="color-item" style="background:#F6D6D6" data-color="Hồng san hô"></button>
                             </div>
-                            <span
-                                class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
+                                class="cursor-pointer"></lord-icon>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm cổ xếp in hoa</p>
@@ -396,8 +411,8 @@
                                 <button class="color-item" style="background:#C9D8B6"
                                     data-color="Họa tiết bạc hà"></button>
                             </div>
-                            <span
-                                class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
+                                class="cursor-pointer"></lord-icon>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm họa tiết Springlight
@@ -436,8 +451,8 @@
                             <div class="product-colors">
                                 <button class="color-item" style="background:#FFFFFF" data-color="Trắng"></button>
                             </div>
-                            <span
-                                class="flash-sale-fav material-symbols-outlined text-[28px] text-gray-400 hover:text-red-500 transition-colors cursor-pointer">favorite_border</span>
+                            <lord-icon src="https://cdn.lordicon.com/hsabxdnr.json" trigger="hover" style="width:30px"
+                                class="cursor-pointer"></lord-icon>
                         </div>
 
                         <p id="product-name" class="mt-2 mb-2 line-clamp-2 h-[50px] capitalize">Đầm Xòe Dạo PhỐ - Bliss
@@ -512,20 +527,32 @@
                     <!-- CONTACT -->
                     <div class="space-y-3 text-sm text-gray-600">
                         <a href="https://maps.google.com/?q=123 Bình Thủy, TP.Cần Thơ" target="_blank"
-                            class="block hover:text-black transition">
-                            📍 1/79 Bình Thủy, TP.Cần Thơ
+                            class="flex items-center gap-2">
+                            <lord-icon src="https://cdn.lordicon.com/onmwuuox.json" trigger="hover" stroke="bold"
+                                style="width:40px;height:40px">
+                            </lord-icon>
+                            <span>1/79 Bình Thủy, TP.Cần Thơ</span>
                         </a>
 
-                        <a href="tel:+84123456789" class="block hover:text-black transition">
-                            📞 +84 123 456 789
+                        <a href="tel:+84123456789" class="flex items-center gap-2">
+                            <lord-icon src="https://cdn.lordicon.com/vcdutftw.json" trigger="hover" stroke="bold"
+                                style="width:40px;height:40px">
+                            </lord-icon>
+                            <span>+84 123 456 789</span>
                         </a>
 
-                        <a href="mailto:cs@ivyshop.com" class="block hover:text-black transition">
-                            ✉️ cs@ivyshop.com
+                        <a href="mailto:cs@ivyshop.com" class="flex items-center gap-2">
+                            <lord-icon src="https://cdn.lordicon.com/dhzbkemf.json" trigger="hover" stroke="bold"
+                                style="width:40px;height:40px">
+                            </lord-icon>
+                            <span>cs@ivyshop.com</span>
                         </a>
 
-                        <p class="hover:text-black transition">
-                            🕒 10:00 - 21:00
+                        <p class="flex items-center gap-2">
+                            <lord-icon src="https://cdn.lordicon.com/warimioc.json" trigger="hover" stroke="bold"
+                                style="width:40px;height:40px">
+                            </lord-icon>
+                            <span>10:00 - 21:00</span>
                         </p>
                     </div>
 
@@ -691,5 +718,36 @@
 <script src="js/newsletter.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/config-swiper.js"></script>
+
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+    const openMobileMenu = () => {
+        mobileMenu.classList.remove("-translate-x-full");
+        mobileMenuOverlay.classList.remove("opacity-0", "invisible");
+        menuBtn.setAttribute("aria-expanded", "true");
+        document.body.classList.add("overflow-hidden");
+    };
+
+    const closeMobileMenu = () => {
+        mobileMenu.classList.add("-translate-x-full");
+        mobileMenuOverlay.classList.add("opacity-0", "invisible");
+        menuBtn.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("overflow-hidden");
+    };
+
+    menuBtn?.addEventListener("click", openMobileMenu);
+    mobileMenuClose?.addEventListener("click", closeMobileMenu);
+    mobileMenuOverlay?.addEventListener("click", closeMobileMenu);
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+            closeMobileMenu();
+        }
+    });
+</script>
 
 </html>
